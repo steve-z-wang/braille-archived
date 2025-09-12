@@ -80,4 +80,36 @@
 2. **Parent nodes**: Value is an array of children
 3. **Mixed content**: First array element as string = parent's text
 4. **Empty elements**: Use empty string `""` or empty array `[]`
-5. **Text extraction**: For images/inputs, use alt text or placeholder
+5. **Visible content only**: Show only what a human can see on screen
+
+## Special Elements
+
+### Input Fields
+Show what's currently visible to the user:
+- **Empty input with placeholder**: Show placeholder text
+- **Input with value**: Show the actual value (placeholder is hidden)
+- **Empty input without placeholder**: Show empty string `""`
+
+```json
+// HTML: <input placeholder="Search products..." value="">
+{"input": "Search products..."}
+
+// HTML: <input placeholder="Search products..." value="laptop">
+{"input": "laptop"}
+
+// HTML: <input value="">
+{"input": ""}
+```
+
+### Images
+Use alt text as the visible content:
+```json
+// HTML: <img src="logo.png" alt="Company Logo">
+{"img": "Company Logo"}
+```
+
+### Reverting Strategy
+When converting selectors back to HTML:
+- The system checks the actual DOM state
+- For inputs: Determines if text matches value or placeholder
+- Dynamically generates the appropriate selector based on current HTML
