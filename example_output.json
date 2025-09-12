@@ -1,0 +1,162 @@
+{
+  "tag": "body",
+  "selector": "body",
+  "visible_text": "",
+  "children": [
+    {
+      "tag": "header",
+      "selector": "header",
+      "visible_text": "",
+      "children": [
+        {
+          "tag": "img",
+          "selector": "img[alt='ShopLogo']",
+          "visible_text": "ShopLogo",
+          "attributes": {"alt": "ShopLogo", "src": "logo.png"},
+          "children": []
+        },
+        {
+          "tag": "nav",
+          "selector": "nav",
+          "visible_text": "",
+          "children": [
+            {
+              "tag": "a",
+              "selector": "a[href='/products']",
+              "visible_text": "Products",
+              "attributes": {"href": "/products"},
+              "children": []
+            },
+            {
+              "tag": "a",
+              "selector": "a[href='/about']",
+              "visible_text": "About",
+              "attributes": {"href": "/about"},
+              "children": []
+            },
+            {
+              "tag": "a",
+              "selector": "a[href='/contact']",
+              "visible_text": "Contact",
+              "attributes": {"href": "/contact"},
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "button",
+          "selector": "#login-btn",
+          "visible_text": "Login",
+          "attributes": {"id": "login-btn", "class": "btn-primary"},
+          "children": []
+        },
+        {
+          "tag": "button",
+          "selector": "#cart-btn",
+          "visible_text": "🛒 3",
+          "attributes": {"id": "cart-btn", "aria-label": "Shopping Cart"},
+          "children": []
+        }
+      ]
+    },
+    {
+      "tag": "main",
+      "selector": "main",
+      "visible_text": "",
+      "children": [
+        {
+          "tag": "h1",
+          "selector": "main h1",
+          "visible_text": "Featured Products",
+          "children": []
+        },
+        {
+          "tag": "div",
+          "selector": "[data-product-id='123']",
+          "visible_text": "",
+          "attributes": {"data-product-id": "123"},
+          "semantic_role": "product-card",
+          "children": [
+            {
+              "tag": "img",
+              "selector": "[data-product-id='123'] img",
+              "visible_text": "Gaming Laptop",
+              "attributes": {"alt": "Gaming Laptop", "src": "laptop.jpg"},
+              "children": []
+            },
+            {
+              "tag": "h3",
+              "selector": "[data-product-id='123'] h3",
+              "visible_text": "Gaming Laptop Pro",
+              "children": []
+            },
+            {
+              "tag": "p",
+              "selector": "[data-product-id='123'] .price",
+              "visible_text": "$1,299.99",
+              "attributes": {"class": "price"},
+              "children": []
+            },
+            {
+              "tag": "button",
+              "selector": "[data-product='123']",
+              "visible_text": "Add to Cart",
+              "attributes": {"class": "add-to-cart", "data-product": "123"},
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "div",
+          "selector": "[data-product-id='456']",
+          "visible_text": "",
+          "attributes": {"data-product-id": "456"},
+          "semantic_role": "product-card",
+          "children": [
+            {
+              "tag": "img",
+              "selector": "[data-product-id='456'] img",
+              "visible_text": "Wireless Mouse",
+              "attributes": {"alt": "Wireless Mouse", "src": "mouse.jpg"},
+              "children": []
+            },
+            {
+              "tag": "h3",
+              "selector": "[data-product-id='456'] h3",
+              "visible_text": "Wireless Mouse",
+              "children": []
+            },
+            {
+              "tag": "p",
+              "selector": "[data-product-id='456'] .price",
+              "visible_text": "$49.99",
+              "attributes": {"class": "price"},
+              "children": []
+            },
+            {
+              "tag": "button",
+              "selector": "[data-product='456']",
+              "visible_text": "Add to Cart",
+              "attributes": {"class": "add-to-cart", "data-product": "456"},
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "input",
+          "selector": "#search-input",
+          "visible_text": "",
+          "attributes": {"type": "text", "id": "search-input", "placeholder": "Search products..."},
+          "children": []
+        },
+        {
+          "tag": "button",
+          "selector": "#search-btn",
+          "visible_text": "Search",
+          "attributes": {"id": "search-btn"},
+          "children": []
+        }
+      ]
+    }
+  ]
+}
