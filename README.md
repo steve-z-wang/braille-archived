@@ -15,6 +15,33 @@ Key characteristics:
 
 This approach bridges the gap between raw HTML complexity and oversimplified text extraction, providing just the right amount of information for effective web automation and analysis.
 
+## Installation
+
+Install weblite using pip:
+
+```bash
+pip install weblite
+```
+
+Or install from source:
+
+```bash
+git clone https://github.com/steve-z-wang/weblite.git
+cd weblite
+pip install -e .
+```
+
+### Requirements
+
+- Python 3.8 or higher
+- Playwright (automatically installed as a dependency)
+
+After installation, you'll need to install Playwright browsers:
+
+```bash
+playwright install
+```
+
 ## Quick Start
 
 ```python
