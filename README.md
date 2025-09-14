@@ -1,18 +1,19 @@
 # Weblite
 
-Simplified web scraping and automation with clean JSON output.
+A text-based web representation that retains meaningful structure information while displaying only human-visible content.
 
 ## Overview
 
-Weblite converts complex HTML pages into clean, structured JSON trees that focus only on visible, interactive content. It filters out styling wrappers, hidden elements, and irrelevant markup.
+Weblite transforms complex web pages into a clean, text-based representation optimized for both LLMs and human comprehension. By extracting only the visible elements and their hierarchical relationships, it creates a simplified yet structurally accurate view of web content.
 
-## Features
+Key characteristics:
+- **LLM-Optimized**: Designed for AI agents to understand and interact with web pages efficiently
+- **Human-Readable**: Clear, intuitive format that humans can easily parse and understand
+- **Structural Integrity**: Preserves the DOM hierarchy and element relationships, unlike flat accessibility trees
+- **Selector Construction**: Maintains enough structural context to enable accurate CSS/XPath selector generation
+- **Visibility-Focused**: Filters out hidden elements, displaying only what users actually see on the page
 
-- **Clean Output**: Only visible, meaningful content
-- **Tree Format**: Nested JSON structure matching page hierarchy  
-- **Formatting Options**: JSON, Markdown, and Tree display formats
-- **Playwright Integration**: Works with existing Playwright automation
-- **Element Pruning**: Removes wrapper divs and spans automatically
+This approach bridges the gap between raw HTML complexity and oversimplified text extraction, providing just the right amount of information for effective web automation and analysis.
 
 ## Quick Start
 
