@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "weblite"
-version = "0.2.0"
+version = "0.2.1"
 authors = [{name = "Steve Wang", email = "stevewang.at.work@gmail.com"}]
 description = "A text-based web representation that retains meaningful structure information while displaying only human-visible content"
 readme = "README.md"
