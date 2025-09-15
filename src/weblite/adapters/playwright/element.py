@@ -1,9 +1,9 @@
 from typing import Dict, List, Union, Optional
 import asyncio
-from ...interfaces.web_element import WebElement
+from ..source_element import SourceElement
 
 
-class PlaywrightElement(WebElement):
+class PlaywrightElement(SourceElement):
     """Playwright implementation of WebElement interface."""
     
     def __init__(self, locator):
@@ -29,7 +29,7 @@ class PlaywrightElement(WebElement):
         except Exception:
             return ''
     
-    async def get_content(self) -> List[Union[str, 'WebElement']]:
+    async def get_content(self) -> List[Union[str, 'SourceElement']]:
         """
         Get ordered mix of text strings and child elements.
         

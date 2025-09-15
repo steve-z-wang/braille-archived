@@ -10,7 +10,7 @@ class ContentElement(Element):
         self.content = content if content is not None else []
         self.display_when_empty = display_when_empty
     
-    def to_display(self) -> Optional[ElementDisplay]:
+    def _to_display(self) -> Optional[ElementDisplay]:
         """
         Process child elements and text, filtering out empty strings.
         """
@@ -23,7 +23,7 @@ class ContentElement(Element):
                 if stripped:
                     content.append(stripped)
             else:  # Element
-                child_display = item.to_display()
+                child_display = item._to_display()
                 if child_display is not None:
                     content.append(child_display)
         

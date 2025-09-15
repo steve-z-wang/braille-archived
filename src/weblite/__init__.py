@@ -2,7 +2,8 @@
 Weblite - Simplified web page tree representation for LLMs
 """
 
-from .weblite import parse, locate
+from .elements.base import Element
+from .adapters import SourceElement, SourcePage, PlaywrightPage, PlaywrightElement
 
-__version__ = "0.1.0"
-__all__ = ["parse", "locate"]
+__version__ = "0.2.0"
+__all__ = ["Element", "SourceElement", "SourcePage", "PlaywrightPage", "PlaywrightElement"]

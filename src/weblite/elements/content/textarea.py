@@ -11,7 +11,7 @@ class TextareaElement(ContentElement):
         # Textarea should always display (interactive element)
         super().__init__('textarea', content, attributes, display_when_empty=True)
     
-    def to_display(self) -> Optional[ElementDisplay]:
+    def _to_display(self) -> Optional[ElementDisplay]:
         """
         Display textarea content and attributes that humans can see.
         Priority: text content > value > placeholder
@@ -20,7 +20,7 @@ class TextareaElement(ContentElement):
         content = []
         
         # First check if textarea has text content
-        display = super().to_display()
+        display = super()._to_display()
         if display and display.content:
             content.extend(display.content)
         else:
