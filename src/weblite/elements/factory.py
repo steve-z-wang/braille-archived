@@ -3,6 +3,7 @@ from weblite.elements.base import Element
 from weblite.elements.constants import SKIP_TAGS
 from weblite.elements.content.base import ContentElement
 from weblite.elements.content.button import ButtonElement
+from weblite.elements.content.svg import SVGElement
 from weblite.elements.content.textarea import TextareaElement
 from weblite.elements.empty.input import InputElement
 from weblite.elements.empty.img import ImgElement
@@ -37,6 +38,8 @@ class ElementFactory:
                 return TextareaElement(content, attributes)
             case 'button':
                 return ButtonElement(content, attributes)
+            case 'svg':
+                return SVGElement(content, attributes)
             case _:
                 # Default: generic content element for div, span, p, h1, a, etc.
                 return ContentElement(tag, content, attributes)
