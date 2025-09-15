@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Dict, List, Optional, Union, TYPE_CHECKING
+from weblite.utils.source_to_element import convert_to_weblite
 
 if TYPE_CHECKING:
-    from ..elements.base import Element
-
+    from weblite.elements.base import Element
 
 class SourceElement(ABC):
     """Abstract interface for web elements from different automation libraries."""
@@ -36,33 +36,6 @@ class SourceElement(ABC):
         """Get all element attributes as a dictionary."""
         pass
 
-    async def _to_weblite(self) -> Optional['Element']:
-        """Internal: Convert this source element to weblite Element, returns None if invisible."""
-        from ..elements.factory import ElementFactory
-
-        # Rule: remove elements with no visible content
-        if not await self.is_visible():
-            return None
-
-        tag = await self.get_tag()
-        content = []
-
-        # Get all attributes
-        attributes = await self.get_attributes()
-
-        for item in await self.get_content():
-            if isinstance(item, str):
-                stripped_str = item.strip()
-                if stripped_str != "":
-                    content.append(stripped_str)
-            elif isinstance(item, SourceElement):
-                child_element = await item._to_weblite()
-                if child_element:  # Only add if not None
-                    content.append(child_element)
-
-        # ElementFactory returns None for elements that should be skipped
-        return ElementFactory.create_element(tag=tag, content=content, attributes=attributes)
-
     async def to_weblite(self) -> Optional['Element']:
         """Convert this source element to a weblite Element."""
-        return await self._to_weblite()
+        return await convert_to_weblite(self)
