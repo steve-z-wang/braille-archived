@@ -1,6 +1,6 @@
-from ..source_page import SourcePage
-from ..source_element import SourceElement
-from .element import PlaywrightElement
+from weblite.adapters.source_page import SourcePage
+from weblite.adapters.source_element import SourceElement
+from weblite.adapters.playwright.element import PlaywrightElement
 
 
 class PlaywrightPage(SourcePage):

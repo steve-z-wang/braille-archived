@@ -1,11 +1,11 @@
 from typing import Dict, List, Union, Optional
-from .base import Element
-from .constants import SKIP_TAGS
-from .content.base import ContentElement
-from .content.button import ButtonElement
-from .content.textarea import TextareaElement
-from .empty.input import InputElement
-from .empty.img import ImgElement
+from weblite.elements.base import Element
+from weblite.elements.constants import SKIP_TAGS
+from weblite.elements.content.base import ContentElement
+from weblite.elements.content.button import ButtonElement
+from weblite.elements.content.textarea import TextareaElement
+from weblite.elements.empty.input import InputElement
+from weblite.elements.empty.img import ImgElement
 
 class ElementFactory:
     """Factory for creating appropriate Element instances based on HTML tags."""

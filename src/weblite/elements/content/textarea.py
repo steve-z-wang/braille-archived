@@ -1,8 +1,8 @@
 from typing import Optional, List, Union, Dict
-from .base import ContentElement
-from ..display import ElementDisplay
-from ..utils import format_attribute
-from ..base import Element
+from weblite.elements.content.base import ContentElement
+from weblite.elements.display import ElementDisplay
+from weblite.elements.utils import format_attribute
+from weblite.elements.base import Element
 
 class TextareaElement(ContentElement):
     """HTML textarea element - shows text content and attributes humans can see."""

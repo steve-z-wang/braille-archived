@@ -1,6 +1,6 @@
 from typing import Optional, Dict
-from ..base import Element
-from ..display import ElementDisplay
+from weblite.elements.base import Element
+from weblite.elements.display import ElementDisplay
 
 class EmptyElement(Element):
     """Base class for HTML void/empty elements that cannot contain child content."""

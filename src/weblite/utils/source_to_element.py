@@ -4,10 +4,10 @@ import asyncio
 from typing import Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from ..adapters.source_element import SourceElement
-    from ..elements.base import Element
+    from weblite.adapters.source_element import SourceElement
+    from weblite.elements.base import Element
 
-from ..elements.factory import ElementFactory
+from weblite.elements.factory import ElementFactory
 
 
 async def convert_to_weblite(source_element: 'SourceElement') -> Optional['Element']:

@@ -1,7 +1,7 @@
 from typing import Optional, Dict
-from .base import EmptyElement
-from ..display import ElementDisplay
-from ..utils import format_attribute
+from weblite.elements.empty.base import EmptyElement
+from weblite.elements.display import ElementDisplay
+from weblite.elements.utils import format_attribute
 
 class ImgElement(EmptyElement):
     """HTML img element - displays alt text if present."""

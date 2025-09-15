@@ -1,7 +1,7 @@
 from typing import Optional, List, Union, Dict
-from .base import ContentElement
-from ..display import ElementDisplay
-from ..base import Element
+from weblite.elements.content.base import ContentElement
+from weblite.elements.display import ElementDisplay
+from weblite.elements.base import Element
 
 class ButtonElement(ContentElement):
     """HTML button element - always displays even when empty (interactive element)."""

@@ -1,6 +1,6 @@
 from typing import Dict, List, Union, Optional
 import asyncio
-from ..source_element import SourceElement
+from weblite.adapters.source_element import SourceElement
 
 
 class PlaywrightElement(SourceElement):

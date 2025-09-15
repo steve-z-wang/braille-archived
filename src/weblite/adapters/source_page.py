@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Optional
-from .source_element import SourceElement
+from weblite.adapters.source_element import SourceElement
 
 if TYPE_CHECKING:
-    from ..elements.base import Element
+    from weblite.elements.base import Element
 
 
 class SourcePage(ABC):

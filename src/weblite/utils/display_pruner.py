@@ -1,6 +1,6 @@
 from typing import Optional
-from ..elements.constants import WRAPPER_TAGS
-from ..elements.display import ElementDisplay
+from weblite.elements.constants import WRAPPER_TAGS
+from weblite.elements.display import ElementDisplay
 
 
 def prune_display_tree(display: ElementDisplay, collapsible_tags=WRAPPER_TAGS) -> Optional[ElementDisplay]:

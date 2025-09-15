@@ -1,6 +1,6 @@
 from typing import Optional, List, Union, Dict
-from ..base import Element
-from ..display import ElementDisplay
+from weblite.elements.base import Element
+from weblite.elements.display import ElementDisplay
 
 class ContentElement(Element):
     """Base class for HTML elements that can contain child content."""

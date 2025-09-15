@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Dict, List, Union, Any, Optional
-from .display import ElementDisplay
+from weblite.elements.display import ElementDisplay
 
 class Element(ABC):
 
@@ -30,7 +30,7 @@ class Element(ABC):
         Returns:
             Dict: Weblite representation of the element
         """
-        from ..utils.display_pruner import prune_display_tree
+        from weblite.utils.display_pruner import prune_display_tree
 
         display = self._to_display()
         if not display:
