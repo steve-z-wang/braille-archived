@@ -43,5 +43,5 @@ class ElementFactory:
                 return SVGElement(content, attributes, is_visible)
             case _:
                 # Default: generic content element for div, span, p, h1, a, etc.
-                return ContentElement(tag, content, attributes, display_when_empty=False, is_visible=is_visible)
+                return ContentElement(tag, content, attributes, is_visible=is_visible)
     

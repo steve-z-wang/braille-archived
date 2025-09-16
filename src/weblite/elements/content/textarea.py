@@ -8,8 +8,7 @@ class TextareaElement(ContentElement):
     """HTML textarea element - shows text content and attributes humans can see."""
     
     def __init__(self, content: List[Union[str, Element]] = None, attributes: Dict[str, str] = None, is_visible: bool = True):
-        # Textarea should always display (interactive element)
-        super().__init__('textarea', content, attributes, display_when_empty=True, is_visible=is_visible)
+        super().__init__('textarea', content, attributes, is_visible=is_visible)
     
     def _to_display(self) -> ElementDisplay:
         """
@@ -21,13 +20,15 @@ class TextareaElement(ContentElement):
         display = super()._to_display()
 
         # If no text content, add value or placeholder attributes
-        if not display.is_visible():
-            value = self.attributes.get('value', '')
-            if value:
-                display.add_content(format_attribute('value', value))
+        # Textarea should always display (interactive element)
+        value = self.attributes.get('value', '')
+        if value:
+            display.add_content(format_attribute('value', value))
+        else:
+            placeholder = self.attributes.get('placeholder', '')
+            if placeholder:
+                display.add_content(format_attribute('placeholder', placeholder))
             else:
-                placeholder = self.attributes.get('placeholder', '')
-                if placeholder:
-                    display.add_content(format_attribute('placeholder', placeholder))
+                display.add_content("")  # Always display even when empty
 
         return display

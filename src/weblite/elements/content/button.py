@@ -7,5 +7,15 @@ class ButtonElement(ContentElement):
     """HTML button element - always displays even when empty (interactive element)."""
     
     def __init__(self, content: List[Union[str, Element]] = None, attributes: Dict[str, str] = None, is_visible: bool = True):
+        super().__init__('button', content, attributes, is_visible=is_visible)
+
+    def _to_display(self) -> ElementDisplay:
+        """
+        Button elements should always display even when empty (interactive element).
+        """
+        display = super()._to_display()
+
         # Buttons should always display even when empty
-        super().__init__('button', content, attributes, display_when_empty=True, is_visible=is_visible)
+        display.add_content("")
+
+        return display
