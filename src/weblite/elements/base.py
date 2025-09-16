@@ -36,7 +36,12 @@ class Element(ABC):
         display = self._to_display()
 
         # Apply visibility filtering only if needed
-        filtered_display = display if include_invisible else filter_invisible_elements(display)
+        if include_invisible:
+            filtered_display = display
+        else:
+            filtered_display, has_visible = filter_invisible_elements(display)
+            if not has_visible:
+                filtered_display = None
         if filtered_display is None:
             return {}
 
