@@ -31,15 +31,7 @@ class ElementDisplay:
         Returns:
             Self for method chaining
         """
-        if isinstance(item, str):
-            # Only add non-empty strings
-            stripped = item.strip()
-            if stripped:
-                self.content.append(stripped)
-        elif isinstance(item, ElementDisplay):
-            # Only add visible child elements
-            if item.is_visible():
-                self.content.append(item)
+        self.content.append(item)
         return self
 
     def is_visible(self) -> bool:
@@ -53,9 +45,7 @@ class ElementDisplay:
         return self.is_inherently_visible and len(self.content) > 0
 
     def to_dict(self) -> Optional[Dict[str, Any]]:
-        """Convert to Weblite JSON format. Returns None if element is not visible."""
-        if not self.is_visible():
-            return None
+        """Convert to Weblite JSON format."""
 
         if len(self.content) == 1:
             item = self.content[0]

@@ -19,30 +19,34 @@ class Element(ABC):
         """
         return ElementDisplay(tag=self.tag, is_visible=self.is_visible)
 
-    def to_dict(self, collapse_wrappers: bool = True) -> Dict:
+    def to_dict(self, collapse_wrappers: bool = True, include_invisible: bool = False) -> Dict:
         """
         Convert element to dictionary representation.
 
         Args:
             collapse_wrappers: Whether to collapse wrapper elements (default: True)
+            include_invisible: Whether to include invisible elements in output (default: False)
 
         Returns:
             Dict: Weblite representation of the element
         """
         from weblite.utils.display_pruner import prune_display_tree
+        from weblite.utils.visibility_filter import filter_invisible_elements
 
         display = self._to_display()
 
-        if collapse_wrappers:
-            pruned = prune_display_tree(display)
-            if pruned:
-                result = pruned.to_dict()
-                return result if result is not None else {}
-            else:
-                return {}
-        else:
-            result = display.to_dict()
-            return result if result is not None else {}
+        # Apply visibility filtering only if needed
+        filtered_display = display if include_invisible else filter_invisible_elements(display)
+        if filtered_display is None:
+            return {}
+
+        # Apply wrapper collapsing if needed
+        collapsed_display = prune_display_tree(filtered_display) if collapse_wrappers else filtered_display
+        if collapsed_display is None:
+            return {}
+
+        result = collapsed_display.to_dict()
+        return result if result is not None else {}
 
     def locate(self, selector: str) -> str:
         """
