@@ -12,19 +12,17 @@ class ContentElement(Element):
     
     def _to_display(self) -> ElementDisplay:
         """
-        Process child elements and text, filtering out empty strings.
+        Process child elements and text using the builder pattern.
         """
-        content = []
+        display = ElementDisplay(tag=self.tag)
 
         for item in self.content:
             if isinstance(item, str):
-                # Filter out empty/whitespace strings
-                stripped = item.strip()
-                if stripped:
-                    content.append(stripped)
+                # add_content() will handle empty string filtering
+                display.add_content(item)
             else:  # Element
                 child_display = item._to_display()
-                # Always include child displays (they're never None now)
-                content.append(child_display)
+                # add_content() will check if child is visible
+                display.add_content(child_display)
 
-        return ElementDisplay(tag=self.tag, content=content)
+        return display

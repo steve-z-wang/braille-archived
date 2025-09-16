@@ -13,4 +13,4 @@ class EmptyElement(Element):
         Default behavior for empty elements: return empty display unless overridden.
         Subclasses should override to provide specific display logic based on attributes.
         """
-        return ElementDisplay(tag=self.tag, content=[])
+        return ElementDisplay(tag=self.tag)

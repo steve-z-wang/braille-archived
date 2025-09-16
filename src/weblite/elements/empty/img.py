@@ -13,8 +13,10 @@ class ImgElement(EmptyElement):
         """
         Display alt text with @ prefix if present, otherwise empty display.
         """
-        alt_text = self.attributes.get('alt', '')
-        if not alt_text:
-            return ElementDisplay(tag=self.tag, content=[])
+        display = ElementDisplay(tag=self.tag)
 
-        return ElementDisplay(tag=self.tag, content=[format_attribute('alt', alt_text)])
+        alt_text = self.attributes.get('alt', '')
+        if alt_text:
+            display.add_content(format_attribute('alt', alt_text))
+
+        return display

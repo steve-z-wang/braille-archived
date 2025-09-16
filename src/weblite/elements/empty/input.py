@@ -15,16 +15,16 @@ class InputElement(EmptyElement):
         Priority: value > placeholder
         Always displays (interactive element).
         """
-        content = []
+        display = ElementDisplay(tag=self.tag)
 
         # Priority: value > placeholder
         value = self.attributes.get('value', '')
         if value:
-            content.append(format_attribute('value', value))
+            display.add_content(format_attribute('value', value))
         else:
             placeholder = self.attributes.get('placeholder', '')
             if placeholder:
-                content.append(format_attribute('placeholder', placeholder))
+                display.add_content(format_attribute('placeholder', placeholder))
 
         # Always return something (interactive element)
-        return ElementDisplay(tag=self.tag, content=content)
+        return display

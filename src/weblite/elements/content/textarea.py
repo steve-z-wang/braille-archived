@@ -17,21 +17,17 @@ class TextareaElement(ContentElement):
         Priority: text content > value > placeholder
         Always displays (interactive element).
         """
-        content = []
-
-        # First check if textarea has text content
+        # Get the base display from parent class
         display = super()._to_display()
-        if display and display.content:
-            content.extend(display.content)
-        else:
-            # If no text content, check value > placeholder
+
+        # If no text content, add value or placeholder attributes
+        if not display.is_visible():
             value = self.attributes.get('value', '')
             if value:
-                content.append(format_attribute('value', value))
+                display.add_content(format_attribute('value', value))
             else:
                 placeholder = self.attributes.get('placeholder', '')
                 if placeholder:
-                    content.append(format_attribute('placeholder', placeholder))
+                    display.add_content(format_attribute('placeholder', placeholder))
 
-        # Always return something (interactive element)
-        return ElementDisplay(tag=self.tag, content=content)
+        return display

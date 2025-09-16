@@ -36,9 +36,14 @@ class Element(ABC):
 
         if collapse_wrappers:
             pruned = prune_display_tree(display)
-            return pruned.to_dict() if pruned else {}
+            if pruned:
+                result = pruned.to_dict()
+                return result if result is not None else {}
+            else:
+                return {}
         else:
-            return display.to_dict()
+            result = display.to_dict()
+            return result if result is not None else {}
 
     def locate(self, selector: str) -> str:
         """
