@@ -6,8 +6,8 @@ from weblite.elements.utils import format_attribute
 class ImgElement(EmptyElement):
     """HTML img element - displays alt text if present."""
     
-    def __init__(self, attributes: Dict[str, str] = None):
-        super().__init__('img', attributes)
+    def __init__(self, attributes: Dict[str, str] = None, is_visible: bool = True):
+        super().__init__('img', attributes, is_visible)
     
     def _to_display(self) -> Optional[ElementDisplay]:
         """

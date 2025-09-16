@@ -6,8 +6,8 @@ from weblite.elements.utils import format_attribute
 class InputElement(EmptyElement):
     """HTML input element - displays value attribute if present."""
     
-    def __init__(self, attributes: Dict[str, str] = None):
-        super().__init__('input', attributes)
+    def __init__(self, attributes: Dict[str, str] = None, is_visible: bool = True):
+        super().__init__('input', attributes, is_visible)
     
     def _to_display(self) -> Optional[ElementDisplay]:
         """

@@ -4,9 +4,10 @@ from weblite.elements.display import ElementDisplay
 
 class Element(ABC):
 
-    def __init__(self, tag: str, attributes: Dict[str, str] = None) -> None:
+    def __init__(self, tag: str, attributes: Dict[str, str] = None, is_visible: bool = True) -> None:
         self.tag = tag
         self.attributes = attributes if attributes is not None else {}
+        self.is_visible = is_visible
 
     @abstractmethod
     def _to_display(self) -> Optional[ElementDisplay]:

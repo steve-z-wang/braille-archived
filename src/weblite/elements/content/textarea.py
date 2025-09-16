@@ -7,9 +7,9 @@ from weblite.elements.base import Element
 class TextareaElement(ContentElement):
     """HTML textarea element - shows text content and attributes humans can see."""
     
-    def __init__(self, content: List[Union[str, Element]] = None, attributes: Dict[str, str] = None):
+    def __init__(self, content: List[Union[str, Element]] = None, attributes: Dict[str, str] = None, is_visible: bool = True):
         # Textarea should always display (interactive element)
-        super().__init__('textarea', content, attributes, display_when_empty=True)
+        super().__init__('textarea', content, attributes, display_when_empty=True, is_visible=is_visible)
     
     def _to_display(self) -> Optional[ElementDisplay]:
         """
@@ -18,7 +18,7 @@ class TextareaElement(ContentElement):
         Always displays (interactive element).
         """
         content = []
-        
+
         # First check if textarea has text content
         display = super()._to_display()
         if display and display.content:
@@ -32,6 +32,6 @@ class TextareaElement(ContentElement):
                 placeholder = self.attributes.get('placeholder', '')
                 if placeholder:
                     content.append(format_attribute('placeholder', placeholder))
-        
+
         # Always return something (interactive element)
         return ElementDisplay(tag=self.tag, content=content)

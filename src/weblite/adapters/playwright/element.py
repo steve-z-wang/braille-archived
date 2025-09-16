@@ -57,13 +57,12 @@ class PlaywrightElement(SourceElement):
             if direct_text and len(direct_text) < 500:  # Reasonable text length limit
                 content.append(direct_text)
             
-            # Get visible child elements
+            # Get all child elements (visibility will be checked later)
             try:
                 child_count = await self._locator.locator('> *').count()
                 for i in range(child_count):
                     child_locator = self._locator.locator(f'> *:nth-child({i + 1})')
-                    if await child_locator.is_visible():
-                        content.append(PlaywrightElement(child_locator))
+                    content.append(PlaywrightElement(child_locator))
             except Exception:
                 pass
             

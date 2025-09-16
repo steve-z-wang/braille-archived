@@ -12,15 +12,16 @@ class ElementFactory:
     """Factory for creating appropriate Element instances based on HTML tags."""
     
     @staticmethod
-    def create_element(tag: str, content: List[Union[str, Element]] = None, attributes: Dict[str, str] = None) -> Optional[Element]:
+    def create_element(tag: str, content: List[Union[str, Element]] = None, attributes: Dict[str, str] = None, is_visible: bool = True) -> Optional[Element]:
         """
         Create appropriate Element instance based on tag type.
-        
+
         Args:
             tag: HTML tag name
             content: List of content items (ignored for empty elements)
             attributes: Element attributes
-            
+            is_visible: Whether the element is visible (metadata only)
+
         Returns:
             Element: Appropriate element instance
             None: If tag should be skipped
@@ -31,16 +32,16 @@ class ElementFactory:
         # Route to specific element classes
         match tag:
             case 'input':
-                return InputElement(attributes)
+                return InputElement(attributes, is_visible)
             case 'img':
-                return ImgElement(attributes)
+                return ImgElement(attributes, is_visible)
             case 'textarea':
-                return TextareaElement(content, attributes)
+                return TextareaElement(content, attributes, is_visible)
             case 'button':
-                return ButtonElement(content, attributes)
+                return ButtonElement(content, attributes, is_visible)
             case 'svg':
-                return SVGElement(content, attributes)
+                return SVGElement(content, attributes, is_visible)
             case _:
                 # Default: generic content element for div, span, p, h1, a, etc.
-                return ContentElement(tag, content, attributes)
+                return ContentElement(tag, content, attributes, display_when_empty=False, is_visible=is_visible)
     

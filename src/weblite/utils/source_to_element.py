@@ -18,19 +18,16 @@ async def convert_to_weblite(source_element: 'SourceElement') -> Optional['Eleme
         source_element: The source element to convert
 
     Returns:
-        Converted Element or None if invisible/should be skipped
+        Converted Element or None if tag should be skipped
     """
 
-    # Rule: remove elements with no visible content
-    if not await source_element.is_visible():
-        return None
-
-    # Get tag, attributes, and content in parallel
+    # Get tag, attributes, content, and visibility in parallel
     tag_task = source_element.get_tag()
     attributes_task = source_element.get_attributes()
     content_task = source_element.get_content()
+    visibility_task = source_element.is_visible()
 
-    tag, attributes, raw_content = await asyncio.gather(tag_task, attributes_task, content_task)
+    tag, attributes, raw_content, is_visible = await asyncio.gather(tag_task, attributes_task, content_task, visibility_task)
 
     content = []
 
@@ -64,4 +61,4 @@ async def convert_to_weblite(source_element: 'SourceElement') -> Optional['Eleme
         content = [item for item in content if item is not None]
 
     # ElementFactory returns None for elements that should be skipped
-    return ElementFactory.create_element(tag=tag, content=content, attributes=attributes)
+    return ElementFactory.create_element(tag=tag, content=content, attributes=attributes, is_visible=is_visible)
