@@ -1,4 +1,4 @@
-from typing import Optional, List, Union, Dict
+from typing import List, Union, Dict
 from weblite.elements.content.base import ContentElement
 from weblite.elements.display import ElementDisplay
 from weblite.elements.utils import format_attribute
@@ -11,7 +11,7 @@ class TextareaElement(ContentElement):
         # Textarea should always display (interactive element)
         super().__init__('textarea', content, attributes, display_when_empty=True, is_visible=is_visible)
     
-    def _to_display(self) -> Optional[ElementDisplay]:
+    def _to_display(self) -> ElementDisplay:
         """
         Display textarea content and attributes that humans can see.
         Priority: text content > value > placeholder

@@ -10,14 +10,13 @@ class Element(ABC):
         self.is_visible = is_visible
 
     @abstractmethod
-    def _to_display(self) -> Optional[ElementDisplay]:
+    def _to_display(self) -> ElementDisplay:
         """
         Internal: Get the display representation for this element.
         Each element type implements its own logic.
 
         Returns:
-            ElementDisplay: Display information for this element
-            None: Element should not be displayed
+            ElementDisplay: Display information for this element (never None)
         """
         pass
 
@@ -34,8 +33,6 @@ class Element(ABC):
         from weblite.utils.display_pruner import prune_display_tree
 
         display = self._to_display()
-        if not display:
-            return {}
 
         if collapse_wrappers:
             pruned = prune_display_tree(display)

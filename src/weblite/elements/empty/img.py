@@ -1,4 +1,4 @@
-from typing import Optional, Dict
+from typing import Dict
 from weblite.elements.empty.base import EmptyElement
 from weblite.elements.display import ElementDisplay
 from weblite.elements.utils import format_attribute
@@ -9,12 +9,12 @@ class ImgElement(EmptyElement):
     def __init__(self, attributes: Dict[str, str] = None, is_visible: bool = True):
         super().__init__('img', attributes, is_visible)
     
-    def _to_display(self) -> Optional[ElementDisplay]:
+    def _to_display(self) -> ElementDisplay:
         """
-        Display alt text with @ prefix if present, otherwise don't display.
+        Display alt text with @ prefix if present, otherwise empty display.
         """
         alt_text = self.attributes.get('alt', '')
         if not alt_text:
-            return None
+            return ElementDisplay(tag=self.tag, content=[])
 
         return ElementDisplay(tag=self.tag, content=[format_attribute('alt', alt_text)])
