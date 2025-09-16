@@ -13,7 +13,7 @@ class ContentElement(Element):
         """
         Process child elements and text using the builder pattern.
         """
-        display = ElementDisplay(tag=self.tag)
+        display = super()._to_display()
 
         for item in self.content:
             if isinstance(item, str):
@@ -21,7 +21,6 @@ class ContentElement(Element):
                 display.add_content(item)
             else:  # Element
                 child_display = item._to_display()
-                # add_content() will check if child is visible
                 display.add_content(child_display)
 
         return display

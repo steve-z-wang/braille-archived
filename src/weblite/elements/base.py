@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Dict, List, Union, Any, Optional
 from weblite.elements.display import ElementDisplay
 
@@ -9,16 +9,15 @@ class Element(ABC):
         self.attributes = attributes if attributes is not None else {}
         self.is_visible = is_visible
 
-    @abstractmethod
     def _to_display(self) -> ElementDisplay:
         """
-        Internal: Get the display representation for this element.
-        Each element type implements its own logic.
+        Get the base display representation with visibility info.
+        Subclasses should call super()._to_display() and add their content.
 
         Returns:
-            ElementDisplay: Display information for this element (never None)
+            ElementDisplay: Base display with tag and visibility info
         """
-        pass
+        return ElementDisplay(tag=self.tag, is_visible=self.is_visible)
 
     def to_dict(self, collapse_wrappers: bool = True) -> Dict:
         """

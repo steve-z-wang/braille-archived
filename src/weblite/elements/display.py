@@ -9,14 +9,16 @@ class ElementDisplay:
     Use add_content() to add visible content to the element.
     """
 
-    def __init__(self, tag: str):
+    def __init__(self, tag: str, is_visible: bool = True):
         """
-        Initialize with just the tag name. Content must be added via add_content().
+        Initialize with tag name and visibility status.
 
         Args:
             tag: HTML tag name for this element
+            is_visible: Whether this element is inherently visible (not CSS hidden)
         """
         self.tag = tag
+        self.is_inherently_visible = is_visible
         self.content: List[Union[str, 'ElementDisplay']] = []
 
     def add_content(self, item: Union[str, 'ElementDisplay']) -> 'ElementDisplay':
@@ -42,12 +44,13 @@ class ElementDisplay:
 
     def is_visible(self) -> bool:
         """
-        Check if this element is visible (has content).
+        Check if this element is visible.
+        An element is visible if it's inherently visible AND has content.
 
         Returns:
-            True if element has any content, False if empty
+            True if element is inherently visible and has content, False otherwise
         """
-        return len(self.content) > 0
+        return self.is_inherently_visible and len(self.content) > 0
 
     def to_dict(self) -> Optional[Dict[str, Any]]:
         """Convert to Weblite JSON format. Returns None if element is not visible."""

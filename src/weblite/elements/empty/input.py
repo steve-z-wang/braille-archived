@@ -15,7 +15,7 @@ class InputElement(EmptyElement):
         Priority: value > placeholder
         Always displays (interactive element).
         """
-        display = ElementDisplay(tag=self.tag)
+        display = super()._to_display()
 
         # Priority: value > placeholder
         value = self.attributes.get('value', '')
