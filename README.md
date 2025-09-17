@@ -1,4 +1,4 @@
-# Weblite
+# braille 
 
 A text-based web representation that retains meaningful structure information while displaying only human-visible content.
 
@@ -6,7 +6,7 @@ A text-based web representation that retains meaningful structure information wh
 
 ## Overview
 
-Weblite transforms complex web pages into a clean, text-based representation optimized for both LLMs and human comprehension. By extracting only the visible elements and their hierarchical relationships, it creates a simplified yet structurally accurate view of web content.
+braille transforms complex web pages into a clean, text-based representation optimized for both LLMs and human comprehension. By extracting only the visible elements and their hierarchical relationships, it creates a simplified yet structurally accurate view of web content.
 
 Key characteristics:
 - **LLM-Optimized**: Designed for AI agents to understand and interact with web pages efficiently
@@ -20,24 +20,24 @@ This approach bridges the gap between raw HTML complexity and oversimplified tex
 ## Documentation
 
 See the [docs/](docs/) folder for detailed documentation:
-- [Tree Format](docs/tree_format.md) - Understanding weblite's output structure
+- [Tree Format](docs/tree_format.md) - Understanding braille's output structure
 - [Pruning Rules](docs/prune_rules.md) - How wrapper elements are collapsed
 - [Selectors](docs/selector.md) - Smart element targeting (coming soon)
-- [Agent Integration](docs/agent.md) - Using weblite with AI agents
+- [Agent Integration](docs/agent.md) - Using braille with AI agents
 
 ## Installation
 
-Install weblite using pip:
+Install braille using pip:
 
 ```bash
-pip install weblite
+pip install braille
 ```
 
 Or install from source:
 
 ```bash
-git clone https://github.com/steve-z-wang/weblite.git
-cd weblite
+git clone https://github.com/steve-z-wang/braille.git
+cd braille
 pip install -e .
 ```
 
@@ -57,7 +57,7 @@ playwright install
 ```python
 import asyncio
 from playwright.async_api import async_playwright
-from weblite import PlaywrightPage
+from braille import PlaywrightPage
 
 async def scrape_page():
     async with async_playwright() as p:
@@ -65,9 +65,9 @@ async def scrape_page():
         page = await browser.new_page()
         await page.goto("https://example.com")
 
-        # Convert to weblite format
+        # Convert to braille format
         web_page = PlaywrightPage(page)
-        element = await web_page.to_weblite()
+        element = await web_page.to_braille()
 
         if element:
             # Get the simplified representation
@@ -93,7 +93,7 @@ Input HTML:
 </div>
 ```
 
-Weblite Output:
+braille Output:
 ```json
 {
   "main": [
