@@ -1,4 +1,4 @@
-# braille 
+# braille (moved to private repo)
 
 A text-based web representation that retains meaningful structure information while displaying only human-visible content.
 
